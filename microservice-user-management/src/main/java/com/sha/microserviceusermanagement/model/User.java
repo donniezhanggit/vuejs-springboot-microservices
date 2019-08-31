@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
-
     @Id
     //Generation Types:
     //Auto: Default one. It does not take any specific action.

@@ -56,8 +56,8 @@ public class CourseController {
 
     @PostMapping("/service/enroll")
     public ResponseEntity<?> saveTransaction(@RequestBody Transaction transaction) {
-        transaction.setDateOfIssue(LocalDateTime.now());
-        transaction.setCourse(courseService.findCourseById(transaction.getCourse().getId()));
+//        transaction.setDateOfIssue(LocalDateTime.now());
+//        transaction.setCourse(courseService.findCourseById(transaction.getCourse().getId()));
         return new ResponseEntity<>(courseService.saveTransaction(transaction), HttpStatus.CREATED);
     }
 
@@ -67,7 +67,11 @@ public class CourseController {
         if(CollectionUtils.isEmpty(transactions)){
            return ResponseEntity.notFound().build();
         }
-        List<Long> userIdList = transactions.parallelStream().map(t -> t.getUserId()).collect(Collectors.toList());
+//        List<Long> userIdList = transactions.parallelStream().map(t -> t.getUserId()).collect(Collectors.toList());
+//        List<String> students = userClient.getUserNames(userIdList);
+
+
+        List<Long> userIdList = null;
         List<String> students = userClient.getUserNames(userIdList);
         return ResponseEntity.ok(students);
     }

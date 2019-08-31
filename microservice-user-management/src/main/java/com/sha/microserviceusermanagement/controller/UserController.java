@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
@@ -47,12 +46,12 @@ public class UserController {
 
     @PostMapping("/service/registration")
     public ResponseEntity<?> saveUser(@RequestBody User user){
-        if(userService.findByUsername(user.getUsername()) != null){
-            //Status Code: 409
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
+//        if(userService.findByUsername(user.getUsername()) != null){
+//            //Status Code: 409
+//            return new ResponseEntity<>(HttpStatus.CONFLICT);
+//        }
         //Default role = user
-        user.setRole(Role.USER);
+//        user.setRole(Role.USER);
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
